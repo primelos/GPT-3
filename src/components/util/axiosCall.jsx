@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const fetchData = async (getIt, model = "text-curie-001") => {
-  console.log(getIt, model);
+  console.log("hey", model, getIt);
   try {
     const {
       data: { choices },

@@ -58,6 +58,11 @@ const PromptTitle = styled.h4`
 const PromptText = styled.p`
   padding: 15px 10px 0 45px;
   font-size: 0.9rem;
+  text-transform: lowercase;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 const Response = styled.div`
