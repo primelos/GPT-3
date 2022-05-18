@@ -46,18 +46,33 @@ const SearchBox = () => {
     const fetchApi = async () => {
       setLoading(true);
       setTimeout(async () => {
-        const temp1 = await fetchData(textToSend, selectState);
-        setData((prevData) => [
-          {
-            id: uuidv4(),
-            prompt: text.prompt,
-            response: temp1.text,
-            copyBool: false,
-          },
-          ...prevData,
-        ]);
-        setText({ prompt: "" });
-        setLoading(false);
+        if (!selectState) {
+          const temp1 = await fetchData(textToSend);
+          setData((prevData) => [
+            {
+              id: uuidv4(),
+              prompt: text.prompt,
+              response: temp1.text,
+              copyBool: false,
+            },
+            ...prevData,
+          ]);
+          setText({ prompt: "" });
+          setLoading(false);
+        } else {
+          const temp1 = await fetchData(textToSend, selectState);
+          setData((prevData) => [
+            {
+              id: uuidv4(),
+              prompt: text.prompt,
+              response: temp1.text,
+              copyBool: false,
+            },
+            ...prevData,
+          ]);
+          setText({ prompt: "" });
+          setLoading(false);
+        }
       }, Math.round(Math.random() * 2000));
     };
     fetchApi();
@@ -76,7 +91,7 @@ const SearchBox = () => {
             placeholder="Search"
             value={text?.prompt}
             onChange={handleChange}
-            rows="12"
+            rows="10"
           />
         </LabelInput>
         <ButtonMain>
@@ -122,6 +137,7 @@ export default SearchBox;
 const FormData = styled.form`
   width: 100%;
   position: relative;
+  flex: 1;
 `;
 
 const TextInput = styled.textarea`
@@ -138,7 +154,7 @@ const LabelInput = styled.label`
   display: flex;
   flex-direction: column;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 800;
 `;
 
 const ButtonContainer = styled.div`
@@ -172,6 +188,9 @@ const ButtonMain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 1480px) {
+    top: 200px;
+  }
 `;
 
 const SelectTitle = styled.h4`
@@ -192,8 +211,7 @@ const InfoLink = styled.a`
   font-size: 1rem;
   color: black;
   margin-left: 10px;
-  /* position: absolute;
-  top: 250px; */
+  font-weight: 600;
   &:hover {
     opacity: 0.5;
   }

@@ -14,12 +14,14 @@ function App() {
 export default App;
 
 const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 900px;
   max-width: 900px;
   margin: auto;
-  height: 100%;
-  background-color: #95bf46;
+  min-height: 100vh;
+  background-color: #51bee8;
   padding: 0 20px;
   padding-bottom: 10px;
-  overflow: hidden;
+  font-family: "Nunito", sans-serif;
 `;
