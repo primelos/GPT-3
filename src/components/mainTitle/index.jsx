@@ -9,8 +9,6 @@ const MainTitle = () => {
     loop: 1,
     deleteSpeed: 0,
     typeSpeed: 120,
-
-    /* Config */
   });
 
   return (

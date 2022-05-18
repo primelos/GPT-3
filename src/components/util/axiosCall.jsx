@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const fetchData = async (getIt, model = "text-curie-001") => {
-  console.log("hey", model, getIt);
   try {
     const {
       data: { choices },
@@ -22,20 +21,8 @@ export const fetchData = async (getIt, model = "text-curie-001") => {
         presence_penalty: 0.0,
       },
     });
-    console.log("ABMABAM", choices[0]);
     return choices[0];
   } catch (error) {
     console.log(error);
   }
-
-  // .then((res) => {
-  //   const {
-  //     data: { choices },
-  //   } = res;
-  //   console.log("ABMABAM", choices[0]);
-  //   return choices[0];
-  // })
-  // .catch((err) => {
-  //   console.log("opps");
-  // });
 };

@@ -7,9 +7,32 @@ import { v4 as uuidv4 } from "uuid";
 const initialState = {
   prompt: "",
 };
+
 const SearchBox = () => {
+  const useLocalStorage = () => {
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        const itemToSave = window.localStorage.getItem("responseAI");
+        return itemToSave ? JSON.parse(itemToSave) : [];
+      } catch (error) {
+        console.log("error", error);
+      }
+    });
+
+    const setValue = (value) => {
+      try {
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        setStoredValue(valueToStore);
+        window.localStorage.setItem("responseAI", JSON.stringify(valueToStore));
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    return [storedValue, setValue];
+  };
   const [text, setText] = useState(initialState);
-  const [data, setData] = useState([]);
+  const [data, setData] = useLocalStorage([]);
   const [loading, setLoading] = useState(true);
   const [textToSend, setTextToSend] = useState(null);
   const [selectState, setSelectState] = useState("");
@@ -30,8 +53,6 @@ const SearchBox = () => {
   };
 
   const handleSelectChange = (e) => {
-    console.log("e.target.value", e.target.value);
-
     setSelectState(e.target.value);
   };
 
@@ -83,8 +104,6 @@ const SearchBox = () => {
     };
     fetchApi();
   }, [textToSend]);
-
-  console.log("data", data);
 
   return (
     <div>
