@@ -8,6 +8,7 @@ const MainTitle = () => {
     count: 0,
     loop: 1,
     deleteSpeed: 0,
+    typeSpeed: 120,
 
     /* Config */
   });
@@ -36,14 +37,13 @@ const TitleContainer = styled.section`
 const ImageContainer = styled.div`
   max-width: 100%;
   width: 100%;
-  /* overflow: hidden; */
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 const Image = styled.img`
-  width: 500px;
+  width: 450px;
   height: auto;
   border-radius: 50%;
   @media screen and (max-width: 1480px) {
@@ -56,4 +56,6 @@ const Title = styled.h1`
   font-weight: 900;
   text-align: center;
   padding-top: 20px;
+  width: 100%;
+  max-width: 100%;
 `;
