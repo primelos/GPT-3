@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Responses from "../responses";
 import { fetchData } from "../util/axiosCall";
@@ -13,6 +13,9 @@ const SearchBox = () => {
   const [loading, setLoading] = useState(true);
   const [textToSend, setTextToSend] = useState(null);
   const [selectState, setSelectState] = useState("");
+
+  const inputRef = useRef(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text?.prompt.length === 0) {
@@ -40,6 +43,9 @@ const SearchBox = () => {
       )
     );
   };
+  React.useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   useEffect(() => {
     if (!textToSend) return;
@@ -92,6 +98,7 @@ const SearchBox = () => {
             value={text?.prompt}
             onChange={handleChange}
             rows="10"
+            ref={inputRef}
           />
         </LabelInput>
         <ButtonMain>
@@ -180,11 +187,15 @@ const ResponseHeader = styled.h2`
   width: 100%;
   margin: 0 auto;
   padding-bottom: 20px;
+  margin-top: 30px;
+  @media screen and (max-width: 1480px) {
+    margin-top: 30px;
+  }
 `;
 
 const ButtonMain = styled.div`
   position: absolute;
-  top: 220px;
+  top: 194px;
   display: flex;
   justify-content: center;
   align-items: center;
