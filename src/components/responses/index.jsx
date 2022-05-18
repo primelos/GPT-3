@@ -3,8 +3,7 @@ import styled from "styled-components";
 import { HiClipboardCopy, HiOutlineClipboardCopy } from "react-icons/hi";
 
 const Responses = ({ item, handleCopy }) => {
-  console.log("item", item);
-  const { prompt, response, id, copyBool } = item;
+  const { prompt, response, copyBool } = item;
   return (
     <ResponseContainer>
       <ResponseWrapper>
@@ -45,9 +44,6 @@ const Prompt = styled.div`
   display: flex;
   width: 100%;
   margin: 0 auto;
-  /* background-color: #e3dfdf; */
-  /* border-top-left-radius: 4px; */
-  /* border-top-right-radius: 4px; */
 `;
 
 const PromptTitle = styled.h4`
@@ -69,9 +65,6 @@ const Response = styled.div`
   display: flex;
   width: 100%;
   margin: 0 auto;
-  /* background-color: #e3dfdf; */
-  /* border-bottom-left-radius: 4px; */
-  /* border-bottom-right-radius: 4px; */
   margin-bottom: 10px;
 `;
 
@@ -101,10 +94,6 @@ const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #e3dfdf; */
-  /* border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px; */
-  /* height: 116px; */
 `;
 
 const ResponseWrapper = styled.div`
