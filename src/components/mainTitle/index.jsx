@@ -14,7 +14,10 @@ const MainTitle = () => {
   return (
     <TitleContainer>
       <ImageContainer>
-        <Image src="/images/Artificial-Intelligence-12.webp" />
+        <Image
+          src="/images/Artificial-Intelligence-12.webp"
+          alt="ai finger and human finger linking"
+        />
       </ImageContainer>
       <Title>{text}</Title>
     </TitleContainer>

@@ -72,39 +72,38 @@ const SearchBox = () => {
     if (!textToSend) return;
     const fetchApi = async () => {
       setLoading(true);
-      setTimeout(async () => {
-        if (!selectState) {
-          const temp1 = await fetchData(textToSend);
-          setData((prevData) => [
-            {
-              id: uuidv4(),
-              prompt: text.prompt,
-              response: temp1.text,
-              copyBool: false,
-            },
-            ...prevData,
-          ]);
-          setText({ prompt: "" });
-          setLoading(false);
-        } else {
-          const temp1 = await fetchData(textToSend, selectState);
-          setData((prevData) => [
-            {
-              id: uuidv4(),
-              prompt: text.prompt,
-              response: temp1.text,
-              copyBool: false,
-            },
-            ...prevData,
-          ]);
-          setText({ prompt: "" });
-          setLoading(false);
-        }
-      }, Math.round(Math.random() * 2000));
+      // setTimeout(async () => {
+      if (!selectState) {
+        const temp1 = await fetchData(textToSend);
+        setData((prevData) => [
+          {
+            id: uuidv4(),
+            prompt: text.prompt,
+            response: temp1.text,
+            copyBool: false,
+          },
+          ...prevData,
+        ]);
+        setText({ prompt: "" });
+        setLoading(false);
+      } else {
+        const temp1 = await fetchData(textToSend, selectState);
+        setData((prevData) => [
+          {
+            id: uuidv4(),
+            prompt: text.prompt,
+            response: temp1.text,
+            copyBool: false,
+          },
+          ...prevData,
+        ]);
+        setText({ prompt: "" });
+        setLoading(false);
+      }
+      // }, Math.round(Math.random() * 2000));
     };
     fetchApi();
   }, [textToSend]);
-
   return (
     <div>
       <FormData onSubmit={(e) => handleSubmit(e)}>
@@ -170,7 +169,7 @@ const TextInput = styled.textarea`
   margin-top: 5px;
   border-radius: 4px;
   padding: 5px;
-
+  font-family: "Nunito", sans-serif;
   &:focus {
     outline: none;
   }
@@ -214,12 +213,12 @@ const ResponseHeader = styled.h2`
 
 const ButtonMain = styled.div`
   position: absolute;
-  top: 194px;
+  top: 224px;
   display: flex;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 1480px) {
-    top: 200px;
+    top: 224px;
   }
 `;
 
