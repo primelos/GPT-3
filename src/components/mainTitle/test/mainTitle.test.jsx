@@ -2,6 +2,12 @@ import { render, screen } from "@testing-library/react";
 import MainTitle from "../index";
 
 describe("MainTitle", () => {
+  test("renders MainTitle", () => {
+    render(<MainTitle />);
+    const title = screen.getByRole("heading");
+    expect(title).toBeInTheDocument();
+  });
+
   it("Image renders correctly", () => {
     render(<MainTitle />);
     let image = screen.getByRole("img");
