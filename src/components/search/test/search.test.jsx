@@ -35,11 +35,3 @@ describe("SearchBox", () => {
     });
   });
 });
-// test("after submit input should clear button diabled", () => {
-//   const { debug } = render(<SearchBox />);
-//   debug();
-//   // const input = screen.getByRole("textbox");
-//   // const submit = screen.getByRole("button");
-
-//   // input.value = "test";
-// })

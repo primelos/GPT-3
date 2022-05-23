@@ -72,7 +72,6 @@ const SearchBox = () => {
     if (!textToSend) return;
     const fetchApi = async () => {
       setLoading(true);
-      // setTimeout(async () => {
       if (!selectState) {
         const temp1 = await fetchData(textToSend);
         setData((prevData) => [
@@ -100,7 +99,6 @@ const SearchBox = () => {
         setText({ prompt: "" });
         setLoading(false);
       }
-      // }, Math.round(Math.random() * 2000));
     };
     fetchApi();
   }, [textToSend]);
